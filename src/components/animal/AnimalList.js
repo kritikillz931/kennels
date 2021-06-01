@@ -23,11 +23,12 @@ export const AnimalList = ({ history }) => {
             <div className="animals">
                 {
                     animals.map(animal => <Link to={`/animals/AnimalDetail/${animal.id}`}>
-                          { animal.name } 
+                          { animal.name }
                         </Link>
                     )
                 }
             </div>
+                
         </>
     )
 }
