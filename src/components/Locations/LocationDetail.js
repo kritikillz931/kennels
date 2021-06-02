@@ -61,7 +61,7 @@ export const LocationDetail = () => {
             </div>
             <div>
                 <h4>Current Residents</h4>
-                {residents.map(resident => <p>{resident.name}</p>)}
+            {residents.map(resident => <p>{resident.name}</p>)}
             </div>
         </section>
     )

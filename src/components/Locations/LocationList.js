@@ -19,12 +19,16 @@ export const LocationList = () => {
 <>
 <div className="locations">
   {
-    locations.map(location => <Link to={`/locations/details/${location.id}`}>
+    locations.map((location) => {
+   return <div className="location"> <Link to={`/locations/details/${location.id}`}>
       { location.name }
-    </Link>)
-  }
+    </Link> 
+<p>{location.employees.length} Employees</p>
+<p>{location.animals.length} Animals</p>
+</div>}
+    )}
 </div>
 </>
     )
-}
+  }
 
