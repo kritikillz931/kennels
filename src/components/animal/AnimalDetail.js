@@ -7,15 +7,12 @@ export const AnimalDetail = () => {
     const { animals } = useContext(AnimalContext)
     const [ animal, setAnimal ] = useState({ location: {}, customer: {} })
 
-    /*
-        Given the example URL above, this will store the value
-        of 5 in the animalId variable
-    */
+ 
     const { animalId } = useParams();
 
 
     useEffect(() => {
-        const thisAnimal = animals.find(a => a.id === animalId) || { location: {}, customer: {} }
+        const thisAnimal = animals.find(a => a.id === parseInt(animalId)) || { location: {}, customer: {} }
 
         setAnimal(thisAnimal)
     }, [animalId])

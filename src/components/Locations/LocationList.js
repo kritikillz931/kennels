@@ -4,10 +4,10 @@ import { Location } from "./Locations"
 import "./Locations.css"
 
 export const LocationList = () => {
-  // This state changes when `getAnimals()` is invoked below
+  
   const { locations, getLocations } = useContext(LocationContext)
 
-  //useEffect - reach out to the world for something
+ 
   useEffect(() => {
     console.log("LocationList: useEffect - getLocations")
     getLocations()
