@@ -5,10 +5,10 @@ import { Employee } from "./Employees"
 import "./Employees.css"
 
 export const EmployeeList = () => {
-  // This state changes when `getAnimals()` is invoked below
+
   const { employees, getEmployees } = useContext(EmployeeContext)
   const history = useHistory()
-  //useEffect - reach out to the world for something
+  
   useEffect(() => {
     console.log("EmployeeList: useEffect - getEmployees")
     getEmployees()
