@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from "react"
+import { Link } from "react-router-dom"
 import { LocationContext } from "./LocationProvider"
 import { Location } from "./Locations"
 import "./Locations.css"
@@ -13,17 +14,17 @@ export const LocationList = () => {
     getLocations()
   }, [])
 
-
   return (
-    <section className="locations">
-      {console.log("LocationList: Render", locations)}
-      {
-        locations.map(location => {
-          return (
-            <Location LocationProp={location}/>
-          )
-        })
-      }
-    </section>
-  )
+
+<>
+<div className="locations">
+  {
+    locations.map(location => <Link to={`/locations/details/${location.id}`}>
+      { location.name }
+    </Link>)
+  }
+</div>
+</>
+    )
 }
+
