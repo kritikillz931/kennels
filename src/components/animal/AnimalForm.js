@@ -6,7 +6,7 @@ import "./Animal.css"
 import { useHistory, useParams } from 'react-router-dom';
 
 export const AnimalForm = () => {
-    const { addAnimal, getAnimals, updateAnimal } = useContext(AnimalContext)
+    const { addAnimal, getAnimalById, updateAnimal } = useContext(AnimalContext)
     const { locations, getLocations } = useContext(LocationContext)
     const { customers, getCustomers } = useContext(CustomerContext)
 
@@ -42,6 +42,7 @@ export const AnimalForm = () => {
           updateAnimal({
               id: animal.id,
               name: animal.name,
+              breed: animal.breed,
               locationId: parseInt(animal.locationId),
               customerId: parseInt(animal.customerId)
           })
@@ -50,6 +51,7 @@ export const AnimalForm = () => {
           //POST - add
           addAnimal({
               name: animal.name,
+              breed: animal.breed,
               locationId: parseInt(animal.locationId),
               customerId: parseInt(animal.customerId)
           })
@@ -62,7 +64,7 @@ export const AnimalForm = () => {
     useEffect(() => {
       getCustomers().then(getLocations).then(() => {
         if (animalId){
-          getAnimals(animalId)
+          getAnimalById(animalId)
           .then(animal => {
               setAnimal(animal)
               setIsLoading(false)
@@ -78,7 +80,7 @@ export const AnimalForm = () => {
 
     return (
       <form className="animalForm">
-        <h2 className="animalForm__title">New Animal</h2>
+        <h2 className="animalForm__title">{animalId ? <> Edit Animal</> : <> New Animal</>}</h2>
         <fieldset>
           <div className="form-group">
             <label htmlFor="animalName">Animal name: </label>
@@ -86,6 +88,15 @@ export const AnimalForm = () => {
             placeholder="Animal name"
             onChange={handleControlledInputChange}
             defaultValue={animal.name}/>
+          </div>
+        </fieldset>
+        <fieldset>
+          <div className="form-group">
+            <label htmlFor="animalbreed">Animal Breed: </label>
+            <input type="text" id="animalBreed" name="breed" required autoFocus className="form-control"
+            placeholder="Animal breed"
+            onChange={handleControlledInputChange}
+            defaultValue={animal.breed}/>
           </div>
         </fieldset>
         <fieldset>
