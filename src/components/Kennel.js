@@ -14,7 +14,10 @@ export const Kennel = () => (
           return (
             <>
               <NavBar />
+              
               <ApplicationViews />
+              <>
+    </>
             </>
           );
         } else {
